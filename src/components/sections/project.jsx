@@ -1,78 +1,212 @@
 import { ReviewOnScroll } from "../ReviewOnScroll";
+import { FaReact, FaJsSquare, FaNodeJs, FaHtml5, FaCode } from "react-icons/fa";
+import { SiTailwindcss, SiMongodb, SiFirebase, SiInternetcomputer} from "react-icons/si";
+import { FiGithub, FiExternalLink } from "react-icons/fi";
+import { PiFileCssBold } from "react-icons/pi";
 
 export const Projects = () => {
-    return (
-    <section id="projects" className="min-h-screen flex items-center justify-center py-20">
-        <ReviewOnScroll>
-        <div className="max-w-5xl mx-auto px-4">
-            <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">Featured Projects</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <div className= "p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all">
-                    <h3 className="text-xl font-bold mb-2">Keeper App</h3>
-                    <p className= "text-gray-400 mb-4"> A note-taking app that allows users to create, edit, and delete notes.</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                        {["React", "JavaScript", "CSS"].map((tech, key) => (
-                            <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-small hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
-                    <div className="flex justify-between items-center">
-                        <a href= "https://example.com" className="text-blue-400 hover:text-blue-300 transition-colors my-4">View Project → </a>
-                    </div>
+  const techIconMap = {
+    Html: {
+      icon: FaHtml5,
+      color: "text-orange-500",
+    },
+    React: {
+      icon: FaReact,
+      color: "text-cyan-400",
+    },
+    JavaScript: {
+      icon: FaJsSquare,
+      color: "text-yellow-400",
+    },
+    CSS: {
+      icon:  PiFileCssBold ,
+      color: "text-blue-500",
+    },
+    Motoko: {
+      icon: SiInternetcomputer,
+      color: "text-purple-400",
+    },
+    "Node.js": {
+      icon: FaNodeJs,
+      color: "text-green-500",
+    },
+    Tailwind: {
+      icon: SiTailwindcss,
+      color: "text-sky-400",
+    },
+    Firebase: {
+      icon: SiFirebase ,
+      color: "text-orange-400",
+    },
+  };
 
+  const projects = [
+    {
+      title: "DBank",
+      description:
+        "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
+
+      tech: ["React", "JavaScript", "CSS", "Motoko", "Html"],
+      preview: "/dbank-preview.png",
+      demoGif: "/dbank-preview.gif",
+      links: {
+        github: "https://github.com/2907-Sony/dbank",
+        demo: "/dbank-demo.gif",
+      },
+      featured: true,
+    },
+    {
+      title: "Driver Moniter System",
+      description:
+        "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
+      tech: ["React", "JavaScript", "CSS", "Node.js", "Firebase"],
+      preview: "/Driver monitoring System-preview.gif",
+      demoGif: "/Driver monitoring System-preview.gif",
+      links: {
+        github: "https://github.com/johannTom/Group2F25",
+        demo: "/MoniterSystem-demo.gif",
+      },
+      featured: true,
+    },
+    {
+      title: "Keeper",
+      description:
+        "It allows users to create, store, and manage personal notes securely using smart contracts (canisters), without relying on centralized servers.",
+
+      tech: ["React", "JavaScript", "CSS", "Motoko", ],
+      preview: "/keeper-preview.gif",
+      demoGif: "/keeper-preview.gif",
+      links: {
+        github: "https://github.com/2907-Sony/Keeper",
+        demo: "/Keeper-demo.gif",
+      },
+      featured: true,
+    },
+    {
+      title: "To-Do List",
+      description:
+        "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
+      tech: ["Html","React", "JavaScript", "CSS"],
+      preview:"/To-Do List-preview.gif",
+      demoGif: "/To-Do List-preview.gif",
+      links: {
+        github: "https://github.com/2907-Sony/TO-DO-LIST",
+        demo: "/ToDoList-demo.gif",
+      },
+      featured: true,
+    },
+    
+
+    {
+      title: "Dice Game",
+      description:
+        "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
+      tech: ["Html", "JavaScript", "CSS"],
+      preview: "/Dice Game-preview.gif",
+      demoGif: "/Dice Game-preview.gif",
+      links: {
+        github: "https://github.com/2907-Sony/Dice-Game",
+        demo: "/Dice Game-demo.gif",
+      },
+      featured: true,
+    },
+    
+  ];
+  return (
+    <section
+      id="projects"
+      className="min-h-screen flex items-center justify-center py-20"
+    >
+      <ReviewOnScroll>
+        <div className="max-w-5xl mx-auto px-4 w-full">
+          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
+            Featured Projects
+          </h2>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
+            {projects.map((project) => (
+              <div
+                key={project.title}
+                className={[
+                  "group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6",
+                  "transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/30",
+                  "hover:shadow-[0_0_0_1px_rgba(59,130,246,0.25),0_20px_60px_rgba(0,0,0,0.55)]",
+                  project.featured ? "md:col-span-2" : "",
+                ].join(" ")}
+              >
+                <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full bg-blue-500/20 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+
+                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+
+                {project.demoGif ? (
+                  <div className="relative mb-5 flex justify-center">
+                    <div className="w-full max-w-[320px] sm:max-w-[360px] md:max-w-[280px] lg:max-w-[300px]">
+                      <div className="h-56 sm:h-64 lg:h-60 overflow-hidden rounded-2xl border border-white/10 bg-black/40">
+                        <img
+                          src={project.demoGif}
+                          alt={`${project.title} demo`}
+                          className="h-full w-full object-contain"
+                          loading="lazy"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="mb-5 h-36 rounded-xl border border-white/10 bg-black/30 flex items-center justify-center text-white/40">
+                    Demo coming soon
+                  </div>
+                )}
+
+                <div className="flex flex-wrap gap-2 mb-5">
+                {project.tech.map((t) => {
+  const tech = techIconMap[t];
+  if (!tech) return null;
+
+  const Icon = tech.icon;
+
+  return (
+    <span
+      key={t}
+      title={t}
+      className="flex items-center justify-center h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 transition hover:bg-white/10 hover:scale-105"
+    >
+      <Icon className={`text-lg ${tech.color}`} />
+    </span>
+  );
+})}
                 </div>
-                <div className= "p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all">
-                    <h3 className="text-xl font-bold mb-2">Keeper App</h3>
-                    <p className= "text-gray-400 mb-4"> A note-taking app that allows users to create, edit, and delete notes.</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                        {["React", "JavaScript", "CSS"].map((tech, key) => (
-                            <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-small hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
-                    <div className="flex justify-between items-center">
-                        <a href= "https://example.com" className="text-blue-400 hover:text-blue-300 transition-colors my-4">View Project → </a>
-                    </div>
 
+                <div className="flex flex-wrap items-center gap-3">
+                  {project.links?.github && (
+                    <a
+                      href={project.links.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-white/80 ring-1 ring-white/10 transition hover:bg-white/10"
+                    >
+                      <FiGithub  text = "white"/>
+                    </a>
+                  )}
+
+                  {project.links?.demo && (
+                    <a
+                      href={project.links.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-xl bg-blue-500/15 px-4 py-2 text-blue-200 ring-1 ring-blue-400/25 transition hover:bg-blue-500/25"
+                    >
+                      Demo
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">
+                        →
+                      </span>
+                    </a>
+                  )}
                 </div>
-                <div className= "p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all">
-                    <h3 className="text-xl font-bold mb-2">Keeper App</h3>
-                    <p className= "text-gray-400 mb-4"> A note-taking app that allows users to create, edit, and delete notes.</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                        {["React", "JavaScript", "CSS"].map((tech, key) => (
-                            <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-small hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
-                    <div className="flex justify-between items-center">
-                        <a href= "https://example.com" className="text-blue-400 hover:text-blue-300 transition-colors my-4">View Project → </a>
-                    </div>
-
-                </div>
-                <div className= "p-6 rounded-xl border border-white hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_2px_8px_rgba(59,130,246,0.1)] transition-all">
-                    <h3 className="text-xl font-bold mb-2">Keeper App</h3>
-                    <p className= "text-gray-400 mb-4"> A note-taking app that allows users to create, edit, and delete notes.</p>
-                    <div className="flex flex-wrap gap-2 mb-4">
-                        {["React", "JavaScript", "CSS"].map((tech, key) => (
-                            <span key={key} className="bg-blue-500/10 text-blue-500 py-1 px-3 rounded-full text-small hover:bg-blue-500/20 hover:shadow-[0_2px_8px_rgba(59,130,246,0.2)] transition">
-                                {tech}
-                            </span>
-                        ))}
-                    </div>
-                    <div className="flex justify-between items-center">
-                        <a href= "https://example.com" className="text-blue-400 hover:text-blue-300 transition-colors my-4">View Project → </a>
-                    </div>
-
-                </div>
-
-            </div>
-
+              </div>
+            ))}
+          </div>
         </div>
-        </ReviewOnScroll>
-
+      </ReviewOnScroll>
     </section>
   );
-}
+};

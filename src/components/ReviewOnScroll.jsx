@@ -12,7 +12,7 @@ export const ReviewOnScroll = ({ children }) => {
         const entry = entries[0];
         if (entry.isIntersecting) {
           node.classList.add("visible");
-          observer.unobserve(node); 
+          observer.unobserve(node);     
         }
       },
       { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
