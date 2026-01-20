@@ -5,6 +5,7 @@ import { FiGithub, FiExternalLink } from "react-icons/fi";
 import { PiFileCssBold } from "react-icons/pi";
 
 export const Projects = () => {
+  const publicUrl = (path) => `${import.meta.env.BASE_URL}${path}`;
   const techIconMap = {
     Html: {
       icon: FaHtml5,
@@ -41,17 +42,18 @@ export const Projects = () => {
   };
 
   const projects = [
+   
     {
       title: "DBank",
       description:
         "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
 
       tech: ["React", "JavaScript", "CSS", "Motoko", "Html"],
-      preview: "/dbank-preview.png",
-      demoGif: "/dbank-preview.gif",
+      preview:publicUrl("dbank-preview.gif"),
+      demoGif:publicUrl("dbank-preview.gif"),
       links: {
         github: "https://github.com/2907-Sony/dbank",
-        demo: "/dbank-demo.gif",
+        demo: publicUrl("dbank-demo.gif") ,
       },
       featured: true,
     },
@@ -60,11 +62,11 @@ export const Projects = () => {
       description:
         "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
       tech: ["React", "JavaScript", "CSS", "Node.js", "Firebase"],
-      preview: "/Driver monitoring System-preview.gif",
-      demoGif: "/Driver monitoring System-preview.gif",
+      preview:  publicUrl("Driver monitoring System-preview.gif"),
+      demoGif: publicUrl("Driver monitoring System-preview.gif"),
       links: {
         github: "https://github.com/johannTom/Group2F25",
-        demo: "/MoniterSystem-demo.gif",
+        demo:  publicUrl("MoniterSystem-demo.gif"),
       },
       featured: true,
     },
@@ -74,11 +76,11 @@ export const Projects = () => {
         "It allows users to create, store, and manage personal notes securely using smart contracts (canisters), without relying on centralized servers.",
 
       tech: ["React", "JavaScript", "CSS", "Motoko", ],
-      preview: "/keeper-preview.gif",
-      demoGif: "/keeper-preview.gif",
+      preview: publicUrl("keeper-preview.gif"),
+      demoGif: publicUrl("keeper-preview.gif"),
       links: {
         github: "https://github.com/2907-Sony/Keeper",
-        demo: "/Keeper-demo.gif",
+        demo:publicUrl("Keeper-demo.gif"),
       },
       featured: true,
     },
@@ -87,11 +89,11 @@ export const Projects = () => {
       description:
         "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
       tech: ["Html","React", "JavaScript", "CSS"],
-      preview:"/To-Do List-preview.gif",
-      demoGif: "/To-Do List-preview.gif",
+      preview:publicUrl("To-Do List-preview.gif"),
+      demoGif:publicUrl("To-Do List-preview.gif"),
       links: {
         github: "https://github.com/2907-Sony/TO-DO-LIST",
-        demo: "/ToDoList-demo.gif",
+        demo: publicUrl("ToDoList-demo.gif"),
       },
       featured: true,
     },
@@ -102,11 +104,11 @@ export const Projects = () => {
       description:
         "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
       tech: ["Html", "JavaScript", "CSS"],
-      preview: "/Dice Game-preview.gif",
-      demoGif: "/Dice Game-preview.gif",
+      preview:publicUrl("Dice Game-preview.gif"),
+      demoGif: publicUrl("Dice Game-preview.gif"),
       links: {
         github: "https://github.com/2907-Sony/Dice-Game",
-        demo: "/Dice Game-demo.gif",
+        demo:publicUrl("Dice Game-demo.gif"),
       },
       featured: true,
     },
