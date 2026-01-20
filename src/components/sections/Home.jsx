@@ -27,7 +27,7 @@ export const Home = () => {
                   </a>
 
                   <a
-                    href="/resume.pdf"
+                    href={`${import.meta.env.BASE_URL}resume.pdf`}
                     target="_blank"
                     rel="noreferrer"
                     className="border border-blue-500/50 text-blue-400 py-3 px-6 rounded font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.2)] hover:bg-blue-500/10"
@@ -38,7 +38,7 @@ export const Home = () => {
               </div>
 
               <div className="flex-1 flex justify-center md:justify-end ">
-                <div className="h-100 relative w-full max-w-sm aspect-[4/5] mx-auto rounded-4xl overflow-hidden my-sm shadow-[0_20px_60px_rgba(0,0,0,0.6),0_0_40px_rgba(59,130,246,0.15)]absolute inset-0 bg-black/10 opacity-65">
+                <div className="h-100 relative w-full max-w-sm aspect-[4/5] mx-auto rounded-4xl overflow-hidden my-sm shadow-[0_20px_60px_rgba(0,0,0,0.6),0_0_40px_rgba(59,130,246,0.15)] absolute inset-0 bg-black/10 opacity-65">
                   <img
                     src={myPic}
                     alt="My Photo"

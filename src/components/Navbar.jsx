@@ -15,7 +15,7 @@ useEffect(() => {
   className="flex items-center gap-8 font-mono font-bold text-white"
 >
   <img
-    src="/favicon.ico.png"
+   src={`${import.meta.env.BASE_URL}favicon.ico.png`}
     alt="logo"
     className="w-12 h-12 object-contain scale-[2.5] origin-left"
   />
