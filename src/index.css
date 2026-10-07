@@ -1,5 +1,13 @@
 @import "tailwindcss";
 
+
+
+@theme {
+  --color-blush: #f4b8b0;
+  --color-peach: #f6cfae;
+  --color-blush-light: #f9dcd6;
+}
+
 html,
 body {
   margin: 0;
@@ -250,4 +258,22 @@ body {
   animation-delay: -5s;
   transform-origin: -1vw -21vh;
   box-shadow: -16vmin 0 2.2521714173196283vmin currentColor;
+}
+
+/* Hide the scrollbar on the swipe-card row (it still scrolls) */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Receipt Scanner card: a line sweeping up and down */
+.scan-line {
+  animation: scanline 2.4s ease-in-out infinite;
+}
+@keyframes scanline {
+  0% { top: 6%; }
+  50% { top: 88%; }
+  100% { top: 6%; }
 }
