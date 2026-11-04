@@ -33,7 +33,7 @@ export const Home = () => {
                 </div>
               </div>
 
-              {/* Text (right on laptop) */}
+         
               <div className="flex-1 text-center md:text-left">
                 <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blush/35 bg-blush/10 px-3 py-1.5 text-xs font-semibold text-blush-light">
                   <span className="h-2 w-2 rounded-full bg-green-400 shadow-[0_0_8px_#4ade80]" />
@@ -68,6 +68,13 @@ export const Home = () => {
                     className="border border-peach/55 text-peach py-3 px-6 rounded font-medium transition-all duration-200 hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(244,184,176,0.2)] hover:bg-blush/10"
                   >
                     View Resume
+                  </a>
+
+                  <a
+                    href="#contact"
+                    className="inline-flex items-center gap-2 rounded border border-white/15 bg-white/5 px-6 py-3 font-medium text-gray-200 transition-all duration-200 hover:-translate-y-0.5 hover:border-peach/40 hover:bg-blush/10 hover:text-peach"
+                  >
+                    Contact
                   </a>
                 </div>
               </div>
