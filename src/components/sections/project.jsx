@@ -12,7 +12,7 @@ const featured = [
     tech: ["Python", "scikit-learn", "Pandas", "FastAPI", "React"],
     links: {
       github: "https://github.com/2907-Sony/churn-predictor",
-      demo: "https://churn-predictor-ho8w.vercel.app",
+      demo: "https://churn-predictor-flax.vercel.app/",
     },
   },
   {
