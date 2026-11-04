@@ -8,21 +8,21 @@ const featured = [
     title: "Customer Churn Predictor",
     visual: "churn",
     description:
-      "End-to-end ML app that predicts customer churn on the IBM Telco dataset. A Random Forest model (78% accuracy) is served through FastAPI, with a React dashboard for risk scores.",
-    tech: ["Python", "scikit-learn", "FastAPI", "React"],
+      "Predicts which telecom customers are likely to cancel, with a risk level and probability. A Random Forest model (78% accuracy) trained on 7,000+ records is served through FastAPI, with a React dashboard for analytics.",
+    tech: ["Python", "scikit-learn", "Pandas", "FastAPI", "React"],
     links: {
       github: "https://github.com/2907-Sony/churn-predictor",
-      demo: "https://churn-predictor-flax.vercel.app/",
+      demo: "https://churn-predictor-ho8w.vercel.app",
     },
   },
   {
     title: "RAG Chatbot",
     visual: "rag",
     description:
-      "Chatbot that answers questions grounded in your own documents. LangChain and ChromaDB handle retrieval, and the Gemini API writes the answer.",
+      "Upload any PDF and ask questions about it. LangChain and ChromaDB retrieve the most relevant sections, and Gemini answers only from your document, saying “I don’t know” when the answer isn’t there.",
     tech: ["LangChain", "ChromaDB", "Gemini API", "FastAPI", "React"],
     links: {
-      github: "https://github.com/2907-Sony/rag-chatbot", 
+      github: "https://github.com/2907-Sony/rag-chatbot",
       demo: "https://rag-chatbot-nine-eta.vercel.app",
     },
   },
@@ -30,8 +30,8 @@ const featured = [
     title: "Receipt Scanner",
     visual: "receipt",
     description:
-      "Upload a receipt photo and get structured data back: store, items and totals. EasyOCR reads the text, a custom-trained spaCy NER model parses the fields, and results are saved to PostgreSQL.",
-    tech: ["EasyOCR", "spaCy NER", "FastAPI", "PostgreSQL", "React"],
+      "Turns a receipt photo into structured data: store, date, total and items. Tesseract OCR reads the text, a custom-trained spaCy NER model parses the fields, and results are saved to PostgreSQL.",
+    tech: ["Tesseract OCR", "spaCy NER", "FastAPI", "PostgreSQL", "Docker", "React"],
     links: {
       github: "https://github.com/2907-Sony/receipt-scanner",
       demo: "https://receipt-scanner-three-eta.vercel.app",
@@ -44,7 +44,7 @@ const otherProjects = [
   {
     title: "Driver Monitor System",
     badge: "Capstone",
-    description: "Team capstone project: a real-time driver monitoring system.",
+    description: "Team capstone project: a real-time driver monitoring dashboard built with React, Node.js and Firebase, with live data updates.",
     tech: ["React", "Node.js", "Firebase"],
     github: "https://github.com/johannTom/Group2F25",
   },
@@ -52,7 +52,7 @@ const otherProjects = [
     title: "Keeper",
     badge: "Web3",
     description:
-      "Create, store, and manage personal notes securely using smart contracts.",
+      "A decentralized notes app on the Internet Computer blockchain, with a Motoko backend that stores notes on-chain.",
     tech: ["React", "Motoko"],
     github: "https://github.com/2907-Sony/Keeper",
   },
@@ -128,7 +128,6 @@ export const Projects = () => {
   const scrollRef = useRef(null);
   const [active, setActive] = useState(0);
 
-  
   const handleScroll = () => {
     const el = scrollRef.current;
     if (!el) return;
@@ -144,10 +143,10 @@ export const Projects = () => {
             Featured Projects
           </h2>
           <p className="mb-8 text-center text-sm text-gray-400">
-            Three live projects you can try right now
+            Three ML-powered apps, each built end to end and deployed live, from data to model to production.
           </p>
 
-          
+        
           <div
             ref={scrollRef}
             onScroll={handleScroll}
@@ -158,15 +157,15 @@ export const Projects = () => {
                 key={p.title}
                 className="group flex w-[84%] shrink-0 snap-center flex-col rounded-2xl border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:-translate-y-1 hover:border-blush/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.55)] md:w-auto"
               >
-                <Visual kind={p.visual} />
+                <div className="relative">
+                  <Visual kind={p.visual} />
+                  <span className="absolute right-2.5 top-2.5 whitespace-nowrap rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-semibold text-green-300 ring-1 ring-green-400/40 backdrop-blur-sm">
+                    ● Live
+                  </span>
+                </div>
 
                 <div className="flex flex-1 flex-col px-2 pt-4 pb-2">
-                  <div className="flex items-center justify-between gap-2">
-                    <h3 className="text-lg font-bold">{p.title}</h3>
-                    <span className="whitespace-nowrap rounded-full bg-green-500/15 px-2.5 py-1 text-[11px] font-semibold text-green-300 ring-1 ring-green-400/30">
-                      ● Live
-                    </span>
-                  </div>
+                  <h3 className="text-lg font-bold leading-snug md:min-h-[3.1rem] lg:min-h-0">{p.title}</h3>
 
                   <p className="mt-2 mb-4 text-sm leading-relaxed text-gray-300">
                     {p.description}
@@ -222,7 +221,12 @@ export const Projects = () => {
             ← swipe →
           </p>
 
-         
+          <p className="mt-4 text-center text-xs text-gray-400">
+            ⏳ Backends run on free-tier hosting, so the first request may take
+            up to a minute to wake up.
+          </p>
+
+ 
           <h3 className="mt-12 mb-1 text-center text-lg font-bold text-gray-200">
             Other Projects
           </h3>

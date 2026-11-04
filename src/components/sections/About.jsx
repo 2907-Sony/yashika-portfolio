@@ -109,42 +109,41 @@ export const About = () => {
                   Yashika
                 </p>
                 <p className="text-sm text-gray-400">
-                  CS student · Summer 2027 co-op
+                CS student · Full-stack + ML · Open to Summer 2027 co-op
                 </p>
               </div>
             </div>
             <p>
-              I'm a{" "}
-              <strong>
-                Bachelor's (Honours) student in Applied Computer Science &
-                Information Technology at Conestoga College
-              </strong>{" "}
-              who likes building things end to end: from a clean React
-              interface, to the API behind it, to a deployed app anyone can try.
-              My background spans <strong>software development</strong> and{" "}
-              <strong>data analytics</strong>, and lately I've been focused on{" "}
-              <strong>applied AI and machine learning</strong>.
-            </p>
+  I'm a{" "}
+  <strong>
+    Bachelor's (Honours) student in Applied Computer Science &
+    Information Technology at Conestoga College
+  </strong>{" "}
+  who loves building things end to end: a clean React interface, the API
+  behind it, and a deployed app anyone can try. My background spans{" "}
+  <strong>software development</strong> and{" "}
+  <strong>data analytics</strong>, and lately I've been focused on{" "}
+  <strong>applied AI and machine learning</strong>.
+</p>
 
-            <p>
-              My recent projects are live and you can try them: a{" "}
-              <strong>customer churn predictor</strong> (scikit-learn and
-              FastAPI), a <strong>RAG chatbot</strong> that answers questions
-              from documents (LangChain, ChromaDB and the Gemini API), and a{" "}
-              <strong>receipt scanner</strong> that turns photos into
-              structured data (EasyOCR and a custom spaCy model).
-            </p>
+<p>
+  I've shipped <strong>three live ML apps</strong>: a{" "}
+  <strong>churn predictor</strong>, a <strong>RAG chatbot</strong> and a{" "}
+  <strong>receipt scanner</strong>. Building them taught me the messy parts
+  too: cleaning real-world data, fitting models into tight memory limits,
+  and debugging production issues after deployment.
+</p>
 
-            <p>
-              Alongside my studies I work{" "}
-              <strong>part-time at Shell</strong>, which has taught me how to
-              communicate clearly, work with people from very different
-              backgrounds, and stay calm in a fast-paced, customer-focused
-              environment. I'm now looking for a{" "}
-              <strong>Summer 2027 co-op</strong> where I can contribute
-              quickly, learn from an experienced team, and keep growing as a
-              developer.
-            </p>
+<p>
+  Alongside my studies, I work <strong>part-time at Shell</strong>, where
+  I've learned to communicate clearly, work with people from very different
+  backgrounds, and stay calm in a fast-paced, customer-facing role. I'm
+  looking for a{" "}
+  <strong>
+    Summer 2027 co-op in software development or machine learning
+  </strong>
+  , where I can ship real features and keep growing as a developer.
+</p>
           </div>
 
           {/* Skills */}
