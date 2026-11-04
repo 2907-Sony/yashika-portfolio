@@ -17,7 +17,7 @@ export const Contact = () => {
     },
     {
       label: "Email",
-      href: "mailto:yashikasony55266@gmil.com?subject=Hello%20Yashika&body=Hi%20Sony,%0A%0A",
+      href: "mailto:yashikasony55266@gmail.com?subject=Hello%20Yashika&body=Hi%20Sony,%0A%0A",
       Icon: Mail,
     },
   ];
@@ -26,7 +26,7 @@ export const Contact = () => {
     <section id="contact" className="py-16 flex justify-center">
       <ReviewOnScroll>
         <div className="px-4 w-full max-w-xl text-center">
-          <h2 className="text-3xl font-bold mb-10 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
+          <h2 className="text-3xl font-bold mb-10 bg-gradient-to-r from-blush to-peach bg-clip-text text-transparent">
             Get In Touch
           </h2>
 
@@ -38,7 +38,7 @@ export const Contact = () => {
                 target={label !== "Email" ? "_blank" : undefined}
                 rel={label !== "Email" ? "noreferrer" : undefined}
                 className="group w-16 h-16 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center
-                           transition hover:-translate-y-1 hover:border-blue-500/60 hover:shadow-[0_0_15px_rgba(59,130,246,0.35)]"
+                           transition hover:-translate-y-1 hover:border-blush/60 hover:shadow-[0_0_15px_rgba(244,184,176,0.35)]"
                 aria-label={label}
                 title={label}
               >
