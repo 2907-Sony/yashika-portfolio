@@ -28,13 +28,15 @@ import {
   SiPostgresql,
   SiVercel,
   SiRender,
+  SiPandas,
+  SiDocker,
 } from "react-icons/si";
 import { FiLayers, FiFileText } from "react-icons/fi";
 import { VscAzureDevops, VscVscode } from "react-icons/vsc";
 import { PiFileCssBold } from "react-icons/pi";
 
 export const About = () => {
-  /* Skills grouped by area. Icon colors are each technology's own brand color. */
+ 
   const skillGroups = [
     {
       title: "Frontend",
@@ -52,12 +54,13 @@ export const About = () => {
       isNew: true,
       items: [
         { icon: SiPython, label: "Python", color: "text-blue-400" },
+        { icon: SiPandas, label: "Pandas", color: "text-indigo-300" },
         { icon: SiScikitlearn, label: "scikit-learn", color: "text-orange-400" },
         { icon: SiSpacy, label: "spaCy", color: "text-sky-400" },
         { icon: SiLangchain, label: "LangChain", color: "text-emerald-400" },
         { icon: FiLayers, label: "ChromaDB", color: "text-amber-400" },
         { icon: SiGooglegemini, label: "Gemini API", color: "text-violet-400" },
-        { icon: FiFileText, label: "EasyOCR", color: "text-gray-300" },
+        { icon: FiFileText, label: "Tesseract OCR", color: "text-gray-300" },
       ],
     },
     {
@@ -81,6 +84,7 @@ export const About = () => {
         { icon: VscAzureDevops, label: "Azure Boards", color: "text-blue-500" },
         { icon: SiVercel, label: "Vercel", color: "text-gray-200" },
         { icon: SiRender, label: "Render", color: "text-gray-200" },
+        { icon: SiDocker, label: "Docker", color: "text-sky-400" },
       ],
     },
   ];
