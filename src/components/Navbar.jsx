@@ -20,7 +20,7 @@ useEffect(() => {
     className="w-12 h-12 object-contain scale-[2.5] origin-left"
   />
   <span className="text-2xl">
-    Yashika<span className="text-blue-500"></span>
+    Yashika<span className="text-blush"></span>
   </span>
 </a>
 

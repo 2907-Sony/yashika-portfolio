@@ -1,180 +1,272 @@
+import { useRef, useState } from "react";
 import { ReviewOnScroll } from "../ReviewOnScroll";
-import { FaReact, FaJsSquare, FaNodeJs, FaHtml5 } from "react-icons/fa";
-import { SiTailwindcss, SiFirebase, SiInternetcomputer } from "react-icons/si";
 import { FiGithub } from "react-icons/fi";
-import { PiFileCssBold } from "react-icons/pi";
 
-export const Projects = () => {
 
-  const publicUrl = (path) => `${import.meta.env.BASE_URL}${path}`;
+const featured = [
+  {
+    title: "Customer Churn Predictor",
+    visual: "churn",
+    description:
+      "Predicts which telecom customers are likely to cancel, with a risk level and probability. A Random Forest model (78% accuracy) trained on 7,000+ records is served through FastAPI, with a React dashboard for analytics.",
+    tech: ["Python", "scikit-learn", "Pandas", "FastAPI", "React"],
+    links: {
+      github: "https://github.com/2907-Sony/churn-predictor",
+      demo: "https://churn-predictor-flax.vercel.app/",
+    },
+  },
+  {
+    title: "RAG Chatbot",
+    visual: "rag",
+    description:
+      "Upload any PDF and ask questions about it. LangChain and ChromaDB retrieve the most relevant sections, and Gemini answers only from your document, saying “I don’t know” when the answer isn’t there.",
+    tech: ["LangChain", "ChromaDB", "Gemini API", "FastAPI", "React"],
+    links: {
+      github: "https://github.com/2907-Sony/rag-chatbot",
+      demo: "https://rag-chatbot-nine-eta.vercel.app",
+    },
+  },
+  {
+    title: "Receipt Scanner",
+    visual: "receipt",
+    description:
+      "Turns a receipt photo into structured data: store, date, total and items. Tesseract OCR reads the text, a custom-trained spaCy NER model parses the fields, and results are saved to PostgreSQL.",
+    tech: ["Tesseract OCR", "spaCy NER", "FastAPI", "PostgreSQL", "Docker", "React"],
+    links: {
+      github: "https://github.com/2907-Sony/receipt-scanner",
+      demo: "https://receipt-scanner-three-eta.vercel.app",
+    },
+  },
+];
 
-  const techIconMap = {
-    Html: { icon: FaHtml5, color: "text-orange-500" },
-    React: { icon: FaReact, color: "text-cyan-400" },
-    JavaScript: { icon: FaJsSquare, color: "text-yellow-400" },
-    CSS: { icon: PiFileCssBold, color: "text-blue-500" },
-    Motoko: { icon: SiInternetcomputer, color: "text-purple-400" },
-    "Node.js": { icon: FaNodeJs, color: "text-green-500" },
-    Tailwind: { icon: SiTailwindcss, color: "text-sky-400" },
-    Firebase: { icon: SiFirebase, color: "text-orange-400" },
-  };
 
-  const projects = [
-    {
-      title: "DBank",
-      description:
-        "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
-      tech: ["React", "JavaScript", "CSS", "Motoko", "Html"],
-      demoGif: publicUrl("dbank-preview.gif"),
-      links: {
-        github: "https://github.com/2907-Sony/dbank",
-        demo: publicUrl("dbank-demo.gif"),
-      },
-      featured: true,
-    },
-    {
-      title: "Driver Monitor System",
-      description:
-        "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
-      tech: ["React", "JavaScript", "CSS", "Node.js", "Firebase"],
-      demoGif: publicUrl("driver-monitoring-system-preview.gif"),
-      links: {
-        github: "https://github.com/johannTom/Group2F25",
-        demo: publicUrl("monitor-system-demo.gif"),
-      },
-      featured: true,
-    },
-    {
-      title: "Keeper",
-      description:
-        "It allows users to create, store, and manage personal notes securely using smart contracts.",
-      tech: ["React", "JavaScript", "CSS", "Motoko"],
-      demoGif: publicUrl("keeper-preview.gif"),
-      links: {
-        github: "https://github.com/2907-Sony/Keeper",
-        demo: publicUrl("keeper-demo.gif"),
-      },
-      featured: true,
-    },
-    {
-      title: "To-Do List",
-      description:
-        "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
-      tech: ["Html", "React", "JavaScript", "CSS"],
-      demoGif: publicUrl("to-do-list-preview.gif"),
-      links: {
-        github: "https://github.com/2907-Sony/TO-DO-LIST",
-        demo: publicUrl("todo-list-demo.gif"),
-      },
-      featured: true,
-    },
-    {
-      title: "Dice Game",
-      description:
-        "A simple banking UI where users can top up and withdraw funds with instant balance updates.",
-      tech: ["Html", "JavaScript", "CSS"],
-      demoGif: publicUrl("dice-game-preview.gif"),
-      links: {
-        github: "https://github.com/2907-Sony/Dice-Game",
-        demo: publicUrl("dice-game-demo.gif"),
-      },
-      featured: true,
-    },
-  ];
+const otherProjects = [
+  {
+    title: "Driver Monitor System",
+    badge: "Capstone",
+    description: "Team capstone project: a real-time driver monitoring dashboard built with React, Node.js and Firebase, with live data updates.",
+    tech: ["React", "Node.js", "Firebase"],
+    github: "https://github.com/johannTom/Group2F25",
+  },
+  {
+    title: "Keeper",
+    badge: "Web3",
+    description:
+      "A decentralized notes app on the Internet Computer blockchain, with a Motoko backend that stores notes on-chain.",
+    tech: ["React", "Motoko"],
+    github: "https://github.com/2907-Sony/Keeper",
+  },
+];
+
+
+const Visual = ({ kind }) => {
+  const frame =
+    "relative h-40 rounded-xl overflow-hidden flex items-center justify-center";
+
+    if (kind === "churn") {
+      return (
+        <div className={`${frame} bg-gradient-to-br from-[#2b1d20] to-[#4b3132]`}>
+          <div className="mt-4 text-center">
+            <svg viewBox="0 0 140 76" className="mx-auto w-36">
+              <defs>
+                <linearGradient id="churnGauge" x1="0" x2="1">
+                  <stop offset="0" stopColor="#f4b8b0" />
+                  <stop offset="1" stopColor="#f6cfae" />
+                </linearGradient>
+              </defs>
+              <path d="M10 70 A60 60 0 0 1 130 70" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="10" strokeLinecap="round" />
+              <path className="gauge-arc" d="M10 70 A60 60 0 0 1 130 70" fill="none" stroke="url(#churnGauge)" strokeWidth="10" strokeLinecap="round" />
+            </svg>
+            <div className="-mt-9 text-2xl font-extrabold leading-none">78%</div>
+            <div className="mt-4 text-[10px] text-blush-light">Churn probability · High risk</div>
+          </div>
+        </div>
+      );
+    }
+
+    if (kind === "rag") {
+      return (
+        <div className={`${frame} bg-gradient-to-br from-[#1c1038] to-[#3b1d6e]`}>
+          <div className="mt-4 w-[78%] rounded-lg border border-white/15 bg-white/10 p-3 backdrop-blur-sm">
+            <div className="rag-q ml-auto max-w-[85%] rounded-xl bg-blush/40 px-3 py-1.5 text-[10px]">
+              What does the document say?
+            </div>
+            <div className="relative mt-2 h-9">
+              
+              <div className="rag-wait absolute left-0 top-0 flex gap-1 rounded-xl bg-white/15 px-3 py-2.5">
+                <span className="rag-dot h-1.5 w-1.5 rounded-full bg-white/70" />
+                <span className="rag-dot h-1.5 w-1.5 rounded-full bg-white/70 [animation-delay:150ms]" />
+                <span className="rag-dot h-1.5 w-1.5 rounded-full bg-white/70 [animation-delay:300ms]" />
+              </div>
+    
+              <div className="rag-ans absolute left-0 top-0 w-[85%] rounded-xl bg-white/15 px-3 py-2">
+                <div className="h-1.5 w-[95%] rounded-full bg-white/30" />
+                <div className="mt-1.5 h-1.5 w-[70%] rounded-full bg-white/30" />
+              </div>
+            </div>
+          </div>
+        </div>
+      );
+    }
 
   return (
-    <section id="projects" className="min-h-screen flex items-center justify-center py-20">
+    <div className={`${frame} bg-gradient-to-br from-[#0b2a22] to-[#12503f]`}>
+      <div className="w-[46%] bg-stone-100 px-2.5 pt-2.5 pb-4 text-[8px] text-neutral-900 [clip-path:polygon(0_0,100%_0,100%_94%,92%_100%,84%_94%,76%_100%,68%_94%,60%_100%,52%_94%,44%_100%,36%_94%,28%_100%,20%_94%,12%_100%,4%_94%,0_100%)]">
+        <div className="font-bold">STORE</div>
+        <div className="my-1.5 h-1 rounded bg-neutral-300" />
+        <div className="my-1.5 h-1 w-[70%] rounded bg-neutral-300" />
+        <div className="my-1.5 h-1 rounded bg-neutral-300" />
+        <div className="mt-2 flex justify-between font-bold">
+          <span>TOTAL</span>
+          <span>$$</span>
+        </div>
+      </div>
+      <div className="scan-line absolute left-[27%] right-[27%] h-0.5 bg-peach shadow-[0_0_12px_#f6cfae]" />
+    </div>
+  );
+};
+
+const Chip = ({ children }) => (
+  <span className="inline-block cursor-default rounded-full bg-white/5 px-2.5 py-1 text-[11px] font-semibold text-gray-300 ring-1 ring-white/10 transition-colors duration-200 hover:bg-peach/15 hover:text-peach hover:ring-peach/40">
+    {children}
+  </span>
+);
+
+export const Projects = () => {
+  const scrollRef = useRef(null);
+  const [active, setActive] = useState(0);
+
+  const handleScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const cardWidth = el.scrollWidth / featured.length;
+    setActive(Math.min(featured.length - 1, Math.round(el.scrollLeft / cardWidth)));
+  };
+
+  return (
+    <section id="projects" className="min-h-screen py-20">
       <ReviewOnScroll>
-        <div className="max-w-5xl mx-auto px-4 w-full">
-          <h2 className="text-3xl font-bold mb-8 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
+        <div className="mx-auto w-full max-w-5xl px-4">
+          <h2 className="mb-2 text-center text-3xl font-bold bg-gradient-to-r from-blush to-peach bg-clip-text text-transparent">
             Featured Projects
           </h2>
+          <p className="mb-8 text-center text-sm text-gray-400">
+            Three ML-powered apps, each built end to end and deployed live, from data to model to production.
+          </p>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-6">
-            {projects.map((project) => (
-              <div
-                key={project.title}
-                className={[
-                  "group relative overflow-hidden rounded-2xl border border-white/10 bg-white/5 p-6",
-                  "transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/30",
-                  "hover:shadow-[0_0_0_1px_rgba(59,130,246,0.25),0_20px_60px_rgba(0,0,0,0.55)]",
-                  project.featured ? "md:col-span-2" : "",
-                ].join(" ")}
+        
+          <div
+            ref={scrollRef}
+            onScroll={handleScroll}
+            className="no-scrollbar -mx-4 flex snap-x snap-mandatory gap-4 overflow-x-auto px-4 pb-4 md:mx-0 md:grid md:grid-cols-3 md:gap-6 md:overflow-visible md:px-0"
+          >
+            {featured.map((p) => (
+              <article
+                key={p.title}
+                className="group flex w-[84%] shrink-0 snap-center flex-col rounded-2xl border border-white/10 bg-white/5 p-3 transition-all duration-300 hover:-translate-y-1 hover:border-blush/30 hover:shadow-[0_20px_60px_rgba(0,0,0,0.55)] md:w-auto"
               >
-                
-                <div className="pointer-events-none absolute -top-24 -right-24 h-48 w-48 rounded-full bg-blue-500/20 blur-3xl opacity-0 transition-opacity duration-300 group-hover:opacity-100" />
+                <div className="relative">
+                  <Visual kind={p.visual} />
+                  <span className="absolute right-2.5 top-2.5 whitespace-nowrap rounded-full bg-black/55 px-2.5 py-1 text-[11px] font-semibold text-green-300 ring-1 ring-green-400/40 backdrop-blur-sm">
+                    ● Live
+                  </span>
+                </div>
 
-           
-                <div className="relative z-10">
-                  <h3 className="text-xl font-bold mb-2">{project.title}</h3>
+                <div className="flex flex-1 flex-col px-2 pt-4 pb-2">
+                  <h3 className="text-lg font-bold leading-snug md:min-h-[3.1rem] lg:min-h-0">{p.title}</h3>
 
-                  {project.demoGif ? (
-                    <div className="relative mb-5 flex justify-center">
-                      <div className="w-full max-w-[320px] sm:max-w-[360px] md:max-w-[280px] lg:max-w-[300px]">
-                        <div className="h-56 sm:h-64 lg:h-60 overflow-hidden rounded-2xl border border-white/10 bg-black/40">
-                          <img
-                            src={project.demoGif}
-                            alt={`${project.title} demo`}
-                            className="h-full w-full object-contain"
-                            loading="lazy"
-                          />
-                        </div>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="mb-5 h-36 rounded-xl border border-white/10 bg-black/30 flex items-center justify-center text-white/40">
-                      Demo coming soon
-                    </div>
-                  )}
+                  <p className="mt-2 mb-4 text-sm leading-relaxed text-gray-300">
+                    {p.description}
+                  </p>
 
-                  <div className="flex flex-wrap gap-2 mb-5">
-                    {project.tech.map((t) => {
-                      const tech = techIconMap[t];
-                      if (!tech) return null;
-
-                      const Icon = tech.icon;
-
-                      return (
-                        <span
-                          key={t}
-                          title={t}
-                          className="flex items-center justify-center h-9 w-9 rounded-full bg-white/5 ring-1 ring-white/10 transition hover:bg-white/10 hover:scale-105"
-                        >
-                          <Icon className={`text-lg ${tech.color}`} />
-                        </span>
-                      );
-                    })}
+                  <div className="mb-4 flex flex-wrap gap-1.5">
+                    {p.tech.map((t) => (
+                      <Chip key={t}>{t}</Chip>
+                    ))}
                   </div>
 
-                  
-                  <div className="relative z-10 flex flex-wrap items-center gap-3">
-                    {project.links?.github && (
+                  <div className="mt-auto flex flex-wrap items-center gap-3">
+                    {p.links.github && (
                       <a
-                        href={project.links.github}
+                        href={p.links.github}
                         target="_blank"
                         rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
+                        aria-label={`${p.title} on GitHub`}
                         className="inline-flex items-center gap-2 rounded-xl bg-white/5 px-4 py-2 text-white/80 ring-1 ring-white/10 transition hover:bg-white/10"
                       >
                         <FiGithub className="text-white" />
                       </a>
                     )}
-
-                    {project.links?.demo && (
-                      <a
-                        href={project.links.demo}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                        className="inline-flex items-center gap-2 rounded-xl bg-blue-500/15 px-4 py-2 text-blue-200 ring-1 ring-blue-400/25 transition hover:bg-blue-500/25"
-                      >
-                        Demo
-                        <span className="transition-transform duration-300 group-hover:translate-x-1">
-                          →
-                        </span>
-                      </a>
-                    )}
+                    <a
+                      href={p.links.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      className="inline-flex items-center gap-2 rounded-xl bg-blush/15 px-4 py-2 text-sm font-semibold text-blush-light ring-1 ring-blush/25 transition hover:bg-blush/25"
+                    >
+                      Live demo
+                      <span className="transition-transform duration-300 group-hover:translate-x-1">
+                        →
+                      </span>
+                    </a>
                   </div>
+                </div>
+              </article>
+            ))}
+          </div>
+
+          
+          <div className="mt-2 flex justify-center gap-1.5 md:hidden">
+            {featured.map((p, i) => (
+              <span
+                key={p.title}
+                className={`h-1.5 w-1.5 rounded-full transition-colors ${
+                  i === active ? "bg-peach" : "bg-white/20"
+                }`}
+              />
+            ))}
+          </div>
+          <p className="mt-2 text-center text-xs text-gray-500 md:hidden">
+            ← swipe →
+          </p>
+
+          <p className="mt-4 text-center text-xs text-gray-400">
+            ⏳ Backends run on free-tier hosting, so the first request may take
+            up to a minute to wake up.
+          </p>
+
+ 
+          <h3 className="mt-12 mb-1 text-center text-lg font-bold text-gray-200">
+            Other Projects
+          </h3>
+          <p className="mb-5 text-center text-xs text-gray-500">Earlier builds</p>
+
+          <div className="grid gap-3 sm:grid-cols-2">
+            {otherProjects.map((p) => (
+              <div
+                key={p.title}
+                className="rounded-2xl border border-white/10 bg-white/5 p-4 transition hover:border-blush/25"
+              >
+                <div className="flex items-center justify-between gap-2">
+                  <h4 className="text-sm font-bold">{p.title}</h4>
+                  <span className="rounded-full bg-blush/15 px-2 py-0.5 text-[10px] font-semibold text-blush-light ring-1 ring-blush/30">
+                    {p.badge}
+                  </span>
+                </div>
+                <p className="mt-2 mb-3 text-xs text-gray-400">{p.description}</p>
+                <div className="flex items-center justify-between gap-2">
+                  <div className="flex flex-wrap gap-1.5">
+                    {p.tech.map((t) => (
+                      <Chip key={t}>{t}</Chip>
+                    ))}
+                  </div>
+                  <a
+                    href={p.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="whitespace-nowrap text-xs text-gray-400 transition hover:text-white"
+                  >
+                    GitHub ↗
+                  </a>
                 </div>
               </div>
             ))}
