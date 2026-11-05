@@ -63,43 +63,51 @@ const Visual = ({ kind }) => {
   const frame =
     "relative h-40 rounded-xl overflow-hidden flex items-center justify-center";
 
-  if (kind === "churn") {
-    return (
-      <div className={`${frame} bg-gradient-to-br from-[#2b1d20] to-[#4b3132]`}>
-        <div className="w-[78%] rounded-lg border border-white/15 bg-white/10 p-3 backdrop-blur-sm">
-          <div className="text-[10px] text-blush-light">Churn risk</div>
-          <div className="my-2 h-2 rounded-full bg-white/15">
-            <div className="h-full w-[72%] rounded-full bg-gradient-to-r from-blush to-peach" />
-          </div>
-          <div className="mt-3 flex h-9 items-end gap-1.5">
-            {[40, 70, 55, 90, 35].map((h, i) => (
-              <span
-                key={i}
-                className="flex-1 rounded-t bg-white/25"
-                style={{ height: `${h}%` }}
-              />
-            ))}
+    if (kind === "churn") {
+      return (
+        <div className={`${frame} bg-gradient-to-br from-[#2b1d20] to-[#4b3132]`}>
+          <div className="mt-4 text-center">
+            <svg viewBox="0 0 140 76" className="mx-auto w-36">
+              <defs>
+                <linearGradient id="churnGauge" x1="0" x2="1">
+                  <stop offset="0" stopColor="#f4b8b0" />
+                  <stop offset="1" stopColor="#f6cfae" />
+                </linearGradient>
+              </defs>
+              <path d="M10 70 A60 60 0 0 1 130 70" fill="none" stroke="rgba(255,255,255,0.15)" strokeWidth="10" strokeLinecap="round" />
+              <path className="gauge-arc" d="M10 70 A60 60 0 0 1 130 70" fill="none" stroke="url(#churnGauge)" strokeWidth="10" strokeLinecap="round" />
+            </svg>
+            <div className="-mt-9 text-2xl font-extrabold leading-none">78%</div>
+            <div className="mt-4 text-[10px] text-blush-light">Churn probability · High risk</div>
           </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 
-  if (kind === "rag") {
-    return (
-      <div className={`${frame} bg-gradient-to-br from-[#1c1038] to-[#3b1d6e]`}>
-        <div className="w-[78%] rounded-lg border border-white/15 bg-white/10 p-3 backdrop-blur-sm">
-          <div className="ml-auto max-w-[85%] rounded-xl bg-blush/40 px-3 py-1.5 text-[10px]">
-            What does the document say?
-          </div>
-          <div className="mt-2 max-w-[85%] rounded-xl bg-white/15 px-3 py-2">
-            <div className="h-1.5 w-[95%] rounded-full bg-white/30" />
-            <div className="mt-1.5 h-1.5 w-[70%] rounded-full bg-white/30" />
+    if (kind === "rag") {
+      return (
+        <div className={`${frame} bg-gradient-to-br from-[#1c1038] to-[#3b1d6e]`}>
+          <div className="mt-4 w-[78%] rounded-lg border border-white/15 bg-white/10 p-3 backdrop-blur-sm">
+            <div className="rag-q ml-auto max-w-[85%] rounded-xl bg-blush/40 px-3 py-1.5 text-[10px]">
+              What does the document say?
+            </div>
+            <div className="relative mt-2 h-9">
+              
+              <div className="rag-wait absolute left-0 top-0 flex gap-1 rounded-xl bg-white/15 px-3 py-2.5">
+                <span className="rag-dot h-1.5 w-1.5 rounded-full bg-white/70" />
+                <span className="rag-dot h-1.5 w-1.5 rounded-full bg-white/70 [animation-delay:150ms]" />
+                <span className="rag-dot h-1.5 w-1.5 rounded-full bg-white/70 [animation-delay:300ms]" />
+              </div>
+    
+              <div className="rag-ans absolute left-0 top-0 w-[85%] rounded-xl bg-white/15 px-3 py-2">
+                <div className="h-1.5 w-[95%] rounded-full bg-white/30" />
+                <div className="mt-1.5 h-1.5 w-[70%] rounded-full bg-white/30" />
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-    );
-  }
+      );
+    }
 
   return (
     <div className={`${frame} bg-gradient-to-br from-[#0b2a22] to-[#12503f]`}>

@@ -277,3 +277,34 @@ body {
   50% { top: 88%; }
   100% { top: 6%; }
 }
+
+
+.gauge-arc { stroke-dasharray: 188.5; animation: gauge-fill 2.6s ease-out infinite alternate; }
+@keyframes gauge-fill {
+  from { stroke-dashoffset: 188.5; }
+  to   { stroke-dashoffset: 41.5; }
+}
+
+.rag-q    { animation: rag-q 6s ease-in-out infinite; }
+.rag-wait { animation: rag-wait 6s ease-in-out infinite; }
+.rag-ans  { animation: rag-ans 6s ease-in-out infinite; }
+.rag-dot  { animation: rag-bounce 0.9s ease-in-out infinite; }
+@keyframes rag-q {
+  0%        { opacity: 0; transform: translateY(6px); }
+  8%, 92%   { opacity: 1; transform: none; }
+  100%      { opacity: 0; }
+}
+@keyframes rag-wait {
+  0%, 10%   { opacity: 0; }
+  14%, 34%  { opacity: 1; }
+  38%, 100% { opacity: 0; }
+}
+@keyframes rag-ans {
+  0%, 38%   { opacity: 0; transform: translateY(6px); }
+  46%, 92%  { opacity: 1; transform: none; }
+  100%      { opacity: 0; }
+}
+@keyframes rag-bounce {
+  0%, 100% { transform: translateY(0); opacity: .5; }
+  50%      { transform: translateY(-3px); opacity: 1; }
+}
