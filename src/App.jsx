@@ -8,6 +8,7 @@ import { Home } from "./components/sections/Home.jsx";
 import { About } from "./components/sections/About.jsx";
 import { Projects } from "./components/sections/project.jsx";
 import { Contact } from "./components/sections/Contact.jsx";
+import { ChatWidget } from "./components/ChatWidget.jsx";
 
 function App() {
   const [isLoaded, setisLoaded] = useState(false);
@@ -36,6 +37,7 @@ function App() {
         <About />
         <Projects />
         <Contact />
+        <ChatWidget />
       </div>
     </div>
   );
