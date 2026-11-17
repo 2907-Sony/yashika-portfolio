@@ -17,7 +17,7 @@ export const Contact = () => {
     },
     {
       label: "Email",
-      href: "mailto:yashikasony55266@gmail.com?subject=Hello%20Yashika&body=Hi%20Sony,%0A%0A",
+      href: "mailto:yashikasony55266@gmail.com?subject=Hello%20Yashika&body=Hi%20Yashika,%0A%0A",
       Icon: Mail,
     },
   ];
@@ -48,7 +48,7 @@ export const Contact = () => {
           </div>
 
           <p className="mt-2 mb-0 text-white/60 text-sm">
-          find me on LinkedIn, explore my work on GitHub, or drop me an email.
+          Find me on LinkedIn, explore my work on GitHub, or drop me an Email.
           </p>
         </div>
       </ReviewOnScroll>
