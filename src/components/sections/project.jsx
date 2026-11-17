@@ -8,7 +8,7 @@ const featured = [
     title: "Customer Churn Predictor",
     visual: "churn",
     description:
-      "Predicts which telecom customers are likely to cancel, with a risk level and probability. A Random Forest model (78% accuracy) trained on 7,000+ records is served through FastAPI, with a React dashboard for analytics.",
+      "Predicts which telecom customers are likely to cancel, with a risk level and probability. A Random Forest model trained on 7,000+ records is served through FastAPI, with a React dashboard for analytics, and evaluated with precision, recall and F1 against a 73% baseline.",
     tech: ["Python", "scikit-learn", "Pandas", "FastAPI", "React"],
     links: {
       github: "https://github.com/2907-Sony/churn-predictor",
@@ -44,7 +44,7 @@ const otherProjects = [
   {
     title: "Driver Monitor System",
     badge: "Capstone",
-    description: "Team capstone project: a real-time driver monitoring dashboard built with React, Node.js and Firebase, with live data updates.",
+    description: "Team capstone project: built the React frontend and designed the Firebase database for a real-time driver monitoring app.",
     tech: ["React", "Node.js", "Firebase"],
     github: "https://github.com/johannTom/Group2F25",
   },

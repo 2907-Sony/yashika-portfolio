@@ -198,15 +198,14 @@ export const About = () => {
               <ul className="list-disc list-inside text-gray-300 space-y-2">
                 <li>
                   <strong>
-                    Bachelor's Degree, Applied Computer Science & IT
+                  Bachelor of Applied Computer Science (Honours)
                   </strong>{" "}
                   — Conestoga College
-                  <span className="text-gray-400"> (2024 - present)</span>
+                  <span className="text-gray-400"> (2024 – Expected Apr 2028)</span>
                 </li>
                 <li>
                   <strong>
-                    Web Dev & Internet Apps Fundamentals, Applied Computer
-                    Science & IT
+                  Web Development & Internet Applications Fundamentals
                   </strong>{" "}
                   — Conestoga College
                   <span className="text-gray-400"> (2023 - 2024)</span>
